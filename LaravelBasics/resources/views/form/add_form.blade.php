@@ -40,6 +40,10 @@
 						<label>Phone</label>
 						<input type="text" name="phone" class="form-control">
 					</div>
+					<div class="form-group">
+						<label>Email</label>
+						<input type="text" name="email" class="form-control">
+					</div>
 
 					<button id="save-btn" type="button" class="btn btn-primary">SAVE</button>
 				</form>
@@ -51,15 +55,15 @@
 
 
 <script type="text/javascript">
-	$('#save-btn').click(function () {
-		if (confirm("هل تريد تأكيد الحفظ؟")) {
-			$('#form').submit();
-		} else {
-			return -1;
-		}
-	});
+	
 
-
+$('#save-btn').click(function() {
+	if (confirm('Are you sure?')) {
+		$('#form').submit();
+	} else {
+		return -1;
+	}
+});
 
 
 </script>

@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', 'HomeController@home');
+Route::get('login', 'AuthController@login_page');
+Route::post('login/auth', 'AuthController@login');
+Route::get('home', 'HomeController@home')->middleware('admin_auth');
+Route::get('logout', 'AuthController@logout');

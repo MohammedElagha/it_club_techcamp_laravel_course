@@ -16,7 +16,7 @@ class CheckToken
      */
     public function handle($request, Closure $next)
     {
-        if (session()->has('token') && (new AdminTokenController)->check_token(session('token'))) {
+        if (session()->has('token') && (new AdminTokenController2)->check_token(session('token'))) {
             return $next($request);
         } else {
             return redirect('login');

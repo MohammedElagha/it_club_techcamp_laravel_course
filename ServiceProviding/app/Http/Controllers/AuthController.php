@@ -33,6 +33,7 @@ class AuthController extends Controller
 	    if (isset($admin)) {
 	    	if (Hash::check($request['password'], $admin->password)) {
 	    		$admin_token_controller = new AdminTokenController();
+	    		$admin_token_controller->destroy($admin->id);
 	    		$token = $admin_token_controller->store($admin->id);
 
 

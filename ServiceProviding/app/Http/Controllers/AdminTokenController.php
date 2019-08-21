@@ -8,33 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class AdminTokenController extends Controller
 {
-    public function generate_token ($length) {
-    	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	    $charactersLength = strlen($characters);
-	    $randomString = '';
-	    for ($i = 0; $i < $length; $i++) {
-	        $randomString .= $characters[rand(0, $charactersLength - 1)];
-	    }
-	    return $randomString;
-    }
-
-
-    public function check_token ($token) {
-    	$count = AdminToken::where(DB::raw('BINARY `token`'), $token)->count();
-
-    	if ($count > 0) {
-    		return false;
-    	} else {
-    		return true;
-    	}
-    }
-
-
     public function store ($admin_id) {
+    	$admin_token_controller_2 = new AdminTokenController2;
     	while (true) {
-    		$random_token = $this->generate_token(30);
+    		$random_token = $admin_token_controller_2->generate_token(30);
 
-    		if ($this->check_token($random_token)) {
+    		if ($admin_token_controller_2->check_token($random_token)) {
     			$admin_token = new AdminToken();
     			$admin_token->admin_id = $admin_id;
     			$admin_token->token = $random_token;
@@ -45,5 +24,10 @@ class AdminTokenController extends Controller
     			}
     		}
     	}
+    }
+
+
+    public function destroy ($admin_id) {
+    	AdminToken::where('admin_id', $admin_id)->delete();
     }
 }

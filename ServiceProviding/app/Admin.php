@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Admin extends Model
 {
-    use SoftDelete;
+    use SoftDeletes;
 }

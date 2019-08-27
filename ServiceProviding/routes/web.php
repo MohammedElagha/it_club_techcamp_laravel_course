@@ -19,3 +19,7 @@ Route::get('login', 'AuthController@login_page');
 Route::post('login/auth', 'AuthController@login');
 Route::get('home', 'HomeController@home')->middleware('admin_auth');
 Route::get('logout', 'AuthController@logout');
+
+Route::get('category/add', 'CategoryController@create');
+Route::get('category', 'CategoryController@index');
+Route::post('category/store', 'CategoryController@store');

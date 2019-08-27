@@ -255,6 +255,13 @@
                         <li class="nav-devider"></li>
                         <li> <a href="{{ URL('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home</span></a></li>
 
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">Categories</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ URL('category/add') }}">Add Category </a></li>
+                                <li><a href="{{ URL('category') }}">View Categories </a></li>
+                            </ul>
+                        </li>
+
                         <!-- <li class="nav-label">Home</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right">3</span></span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -382,8 +389,10 @@
         <!-- End Left Sidebar  -->
 
 
-
-        @yield('content')
+         <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            @yield('content')
+        </div>
 
 
         <!-- footer -->

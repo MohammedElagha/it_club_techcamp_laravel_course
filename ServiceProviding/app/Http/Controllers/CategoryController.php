@@ -70,10 +70,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        DB::table('providers')
-        ->join('provider_ratings', 'providers.id', 'provider_ratings.provider_id')
-        ->select('providers.name', 'providers.ratings_no', 'providers.rating_avg')
-        ->get();
+        
     }
 
     /**
@@ -84,7 +81,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        // $category = Category::where('id', $id)->first();
+
+        return view('category.edit')->with('category', $category);
     }
 
     /**
@@ -96,7 +96,34 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $status = false;
+        $category_controller_2 = new CategoryController2();
+
+        if ($request->has('category_name')) {
+            $category = Category::find($id);
+
+            if (isset($category)) {
+                $category->name = $request['category_name'];
+                $category->updated_by = session('id');
+
+                if ($request->hasFile('category_icon')) {
+                    $icon = $request->file('category_icon');
+                    $icon_name = $category_controller_2->generate_category_icon_name($icon);
+                    $category->icon = $icon_name;
+                }
+
+                $result = $category->save();
+
+                if ($result) {
+                    if ($request->hasFile('category_icon')) {
+                        $category_controller_2->upload_category_icon($icon, $icon_name);
+                    }
+                    $status = true;
+                }
+            }
+        }
+
+        return redirect('category/' . $id)->with('update_category_status', $status);
     }
 
     /**
@@ -107,6 +134,18 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = false;
+        $category = Category::find($id);
+
+        if (isset($category)) {
+            Category::where('id', $id)->update(["deleted_by" => session('id')]);
+            $result = $category->delete();
+
+            if ($result) {
+                $status = true;
+            }
+        }
+
+        return redirect('category')->with('delete_category_status', $status);
     }
 }

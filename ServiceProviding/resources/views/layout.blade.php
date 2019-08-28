@@ -262,6 +262,20 @@
                             </ul>
                         </li>
 
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">Countries</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ URL('country/add') }}">Add Country </a></li>
+                                <li><a href="{{ URL('country') }}">View Countries </a></li>
+                            </ul>
+                        </li>
+
+                        <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">Cities</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ URL('city/add') }}">Add City </a></li>
+                                <li><a href="{{ URL('city') }}">View Cities </a></li>
+                            </ul>
+                        </li>
+
                         <!-- <li class="nav-label">Home</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right">3</span></span></a>
                             <ul aria-expanded="false" class="collapse">

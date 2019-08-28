@@ -1,5 +1,5 @@
 <?php
 
 return [
-	"category_icon" => storage_path('categories_icons')
+	"category_icon" => 'http://localhost:8000/storage/categories_icons'
 ];

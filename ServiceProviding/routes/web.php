@@ -20,6 +20,15 @@ Route::post('login/auth', 'AuthController@login');
 Route::get('home', 'HomeController@home')->middleware('admin_auth');
 Route::get('logout', 'AuthController@logout');
 
-Route::get('category/add', 'CategoryController@create');
-Route::get('category', 'CategoryController@index');
-Route::post('category/store', 'CategoryController@store');
+Route::get('category/{id}', 'CategoryController@edit')->middleware('admin_auth');
+Route::get('category/add', 'CategoryController@create')->middleware('admin_auth');
+Route::get('category', 'CategoryController@index')->middleware('admin_auth');
+Route::post('category/store', 'CategoryController@store')->middleware('admin_auth');
+Route::put('category/update/{id}', 'CategoryController@update')->middleware('admin_auth');
+Route::delete('category/delete/{id}', 'CategoryController@destroy')->middleware('admin_auth');
+
+Route::get('country/add', 'CountryController@create')->middleware('admin_auth');
+Route::post('country/store', 'CountryController@store')->middleware('admin_auth');
+Route::get('country', 'CountryController@index')->middleware('admin_auth');
+
+Route::get('city', 'CityController@index')->middleware('admin_auth');

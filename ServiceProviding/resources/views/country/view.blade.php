@@ -20,6 +20,7 @@
                                                 <th>Name</th>
                                                 <th>Code</th>
                                                 <th>Cities</th>
+                                                <th>Cities</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -31,6 +32,9 @@
                                                         @foreach ($country->cities as $city)
                                                             {{ $city->name }} <br>
                                                         @endforeach
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ URL('country/' . $country->id . '/city') }}">Cities</a>
                                                     </td>
                                         		</tr>
                                         	@endforeach

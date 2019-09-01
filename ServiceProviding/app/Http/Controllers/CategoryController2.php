@@ -15,7 +15,7 @@ class CategoryController2 extends Controller
 
 
     public function upload_category_icon ($icon, $icon_name) {
-    	$path = storage_path('categories_icons');
+    	$path = storage_path('app/public/categories_icons');
     	$icon->move($path, $icon_name);
     }
 }

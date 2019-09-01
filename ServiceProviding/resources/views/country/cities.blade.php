@@ -9,7 +9,7 @@
                 	<div class="col-lg-12">
                         <div class="card">
                             <div class="card-title">
-                                <h4>Cities </h4>
+                                <h4>Cities of Country </h4>
 
                             </div>
                             <div class="card-body">
@@ -21,11 +21,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        	@foreach ($cities as $city)
-                                        		<tr>
-                                                    <td>{{ $city->name }}</td>
-                                        		</tr>
-                                        	@endforeach
+                                        	
                                         </tbody>
                                     </table>
                                 </div>
@@ -33,17 +29,22 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        @for ($i = 1 ; $i <= $pages_no ; $i++)
-                            <a href="{{ URL('city') }}?page={{$i}}">{{ $i }}</a> <br>
-                        @endfor
-                    </div>
                 </div>
             </div>
 
 <script type="text/javascript">
-    $('#delete_link').click(function (e) {
-        $(this).parent().submit();
+    $(document).ready(function() {
+        $.ajax({
+            url: '{{ URL("country/cities") }}' + '?country_id=' + {{ $id }},
+            method: 'GET',
+            success:function(response) {
+                for(var i = 0 ; i < response.length ; i++) {
+                    $('tbody').append('<tr>' +
+                                        '<td>' + response[i].name + '</td>' +
+                                    '</tr>');
+                }
+            }
+        });
     });
 </script>
 

@@ -21,6 +21,9 @@
     <!--[if lt IE 9]>
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <!-- All Jquery -->
+    <script src="{{ asset('template/js/lib/jquery/jquery.min.js') }}"></script>
 <![endif]-->
 </head>
 
@@ -465,8 +468,7 @@
       </div>
 
     <!-- End Wrapper -->
-    <!-- All Jquery -->
-    <script src="{{ asset('template/js/lib/jquery/jquery.min.js') }}"></script>
+    
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{ asset('template/js/lib/bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ asset('template/js/lib/bootstrap/js/bootstrap.min.js') }}"></script>

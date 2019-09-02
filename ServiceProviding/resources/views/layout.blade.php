@@ -256,7 +256,20 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
-                        <li> <a href="{{ URL('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home</span></a></li>
+
+                        @foreach ((new App\Http\Controllers\SectionController)->index() as $section)
+                            @if ($section->name == "Home")
+                                <li> <a href="{{ URL('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">{{ $section->name }}</span></a></li>
+                            @else
+                                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">{{ $section->name }}</span></a>
+                                    <ul aria-expanded="false" class="collapse">
+                                        
+                                    </ul>
+                                </li>
+                            @endif
+                        @endforeach
+
+                        <!-- <li> <a href="{{ URL('home') }}" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Home</span></a></li>
 
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">Categories</span></a>
                             <ul aria-expanded="false" class="collapse">
@@ -277,7 +290,7 @@
                                 <li><a href="{{ URL('city/add') }}">Add City </a></li>
                                 <li><a href="{{ URL('city') }}">View Cities </a></li>
                             </ul>
-                        </li>
+                        </li> -->
 
                         <!-- <li class="nav-label">Home</li>
                         <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard <span class="label label-rouded label-primary pull-right">3</span></span></a>

@@ -27,7 +27,7 @@ class AuthController extends Controller
 	    		->join('admin_logins', 'admins.id', 'admin_logins.admin_id')
 	    		->where('admin_logins.username', $request['username'])
 	    		->whereNull('admins.deleted_at')
-	    		->select('admins.id', 'admins.name', 'admins.email', 'admin_logins.password')
+	    		->select('admins.id', 'admins.name', 'admins.email', 'admin_logins.password', 'admins.user_group_id')
 	    		->first();
 
 	    if (isset($admin)) {
@@ -40,6 +40,7 @@ class AuthController extends Controller
 
 	    		session(["id" => $admin->id,
 	    				"name" => $admin->name,
+	    				"user_group_id" => $admin->user_group_id,
 	    				"token" => $token]);
 
 	    		return redirect('home');

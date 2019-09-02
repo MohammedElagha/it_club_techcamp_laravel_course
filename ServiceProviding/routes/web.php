@@ -17,23 +17,23 @@ Route::get('/', function () {
 
 Route::get('login', 'AuthController@login_page');
 Route::post('login/auth', 'AuthController@login');
-Route::get('home', 'HomeController@home')->middleware('admin_auth');
+Route::get('home', 'HomeController@home')->middleware('admin_auth')->middleware('user_group');
 Route::get('logout', 'AuthController@logout');
 
-Route::get('category/add', 'CategoryController@create')->middleware('admin_auth');
-Route::get('category/{id}', 'CategoryController@edit')->middleware('admin_auth');
-Route::get('category', 'CategoryController@index')->middleware('admin_auth');
-Route::post('category/store', 'CategoryController@store')->middleware('admin_auth');
-Route::put('category/update/{id}', 'CategoryController@update')->middleware('admin_auth');
-Route::delete('category/delete/{id}', 'CategoryController@destroy')->middleware('admin_auth');
+Route::get('category/add', 'CategoryController@create')->middleware('admin_auth')->middleware('user_group');
+Route::get('category/{id}', 'CategoryController@edit')->middleware('admin_auth')->middleware('user_group');
+Route::get('category', 'CategoryController@index')->middleware('admin_auth')->middleware('user_group');
+Route::post('category/store', 'CategoryController@store')->middleware('admin_auth')->middleware('user_group');
+Route::put('category/update/{id}', 'CategoryController@update')->middleware('admin_auth')->middleware('user_group');
+Route::delete('category/delete/{id}', 'CategoryController@destroy')->middleware('admin_auth')->middleware('user_group');
 
-Route::get('country/add', 'CountryController@create')->middleware('admin_auth');
-Route::post('country/store', 'CountryController@store')->middleware('admin_auth');
-Route::get('country', 'CountryController@index')->middleware('admin_auth');
+Route::get('country/add', 'CountryController@create')->middleware('admin_auth')->middleware('user_group');
+Route::post('country/store', 'CountryController@store')->middleware('admin_auth')->middleware('user_group');
+Route::get('country', 'CountryController@index')->middleware('admin_auth')->middleware('user_group');
 
-Route::get('city', 'CityController@index')->middleware('admin_auth');
-Route::get('city/add', 'CityController@create')->middleware('admin_auth');
-Route::post('city/store', 'CityController@store')->middleware('admin_auth');
+Route::get('city', 'CityController@index')->middleware('admin_auth')->middleware('user_group');
+Route::get('city/add', 'CityController@create')->middleware('admin_auth')->middleware('user_group');
+Route::post('city/store', 'CityController@store')->middleware('admin_auth')->middleware('user_group');
 
-Route::get('country/cities', 'CityController2@get_cities_of_country')->middleware('admin_auth');
-Route::get('country/{id}/city', 'CityController2@cities_of_country')->middleware('admin_auth');
+Route::get('country/cities', 'CityController2@get_cities_of_country')->middleware('admin_auth')->middleware('user_group');
+Route::get('country/{id}/city', 'CityController2@cities_of_country')->middleware('admin_auth')->middleware('user_group');

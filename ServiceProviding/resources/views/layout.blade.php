@@ -263,7 +263,9 @@
                             @else
                                 <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-object-group"></i><span class="hide-menu">{{ $section->name }}</span></a>
                                     <ul aria-expanded="false" class="collapse">
-                                        
+                                        @foreach ($section->subsections as $subsection)
+                                            <li><a href="{{ URL($subsection->url) }}">{{ $subsection->name }} </a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                             @endif

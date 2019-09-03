@@ -37,3 +37,9 @@ Route::post('city/store', 'CityController@store')->middleware('admin_auth')->mid
 
 Route::get('country/cities', 'CityController2@get_cities_of_country')->middleware('admin_auth')->middleware('user_group');
 Route::get('country/{id}/city', 'CityController2@cities_of_country')->middleware('admin_auth')->middleware('user_group');
+
+Route::get('user-group/add', 'UserGroupController@create')->middleware('admin_auth')->middleware('user_group');
+Route::post('user-group/store', 'UserGroupController@store')->middleware('admin_auth')->middleware('user_group');
+
+Route::get('admin/add', 'AdminController@create')->middleware('admin_auth')->middleware('user_group');
+Route::post('admin/store', 'AdminController@store')->middleware('admin_auth')->middleware('user_group');

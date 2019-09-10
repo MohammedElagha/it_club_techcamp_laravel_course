@@ -34,4 +34,61 @@ class UtilityController extends Controller
         
         return $random_string;
     }
+
+
+    public function json_select ($outputs) {
+        $status = array("status" => false, "http_code" => 404);
+        $arrays = array();
+
+        if (count($outputs) > 0) {
+            foreach ($outputs as $key => $output) {
+                $arrays[$key] = $output;
+                // array_push($arrays, [$key => $output]);
+
+                if (count($output) > 0) {
+                    $status["status"] = true;
+                    $status["http_code"] = 200;
+                }
+            }
+        }
+
+        $response = array("status" => $status, "data" => $arrays);
+        return $response;
+    }
+
+
+    public function json_store ($output, $output_name, $result) {
+        $status = array("status" => false, "http_code" => 502);
+
+        if ($result) {
+            $status["status"] = true;
+            $status["http_code"] = 201;
+        }
+
+        $data = array($output_name => $output);
+
+        $response = array("status" => $status, "data" => $data);
+        return $response;
+    }
+
+
+    public function json_update ($output, $output_name, $result) {
+        $status = array("status" => false, "http_code" => 502);
+
+        if ($result && !is_null($output)) {
+            $status["status"] = true;
+            $status["http_code"] = 200;
+        } else if (!$result && !is_null($output)) {
+            $status["status"] = false;
+            $status["http_code"] = 502;
+        } else {
+            $status["status"] = false;
+            $status["http_code"] = 404;
+        }
+
+        $data = array($output_name => $output);
+
+        $response = array("status" => $status, "data" => $data);
+        return $response;
+    }
 }

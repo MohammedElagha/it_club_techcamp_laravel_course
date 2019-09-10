@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "ed2aefbb-fe50-4ee2-be89-e0592f1abb06",
+		"name": "TechCamp Laravel Course - API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Rating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "provider_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "stars_no",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "comment",
+							"value": "very bad",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/rating/store",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"rating",
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Provider Rating",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost:8000/provider-rating?provider_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"provider-rating"
+					],
+					"query": [
+						{
+							"key": "provider_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Provider Information UI",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/provider?provider_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"provider"
+					],
+					"query": [
+						{
+							"key": "provider_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

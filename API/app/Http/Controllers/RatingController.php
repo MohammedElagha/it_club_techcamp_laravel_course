@@ -22,18 +22,16 @@ class RatingController extends Controller
 
     	$result = $rating->save();
 
-    	$status = array("status" => false, "http_code" => 502);
     	if ($result) {
-    		$status["status"] = true;
-    		$status["http_code"] = 201;
-    	}
+            unset($rating->client_id);
+            unset($rating->created_at);
+            unset($rating->updated_at);
 
-    	unset($rating->client_id);
-    	unset($rating->created_at);
-    	unset($rating->updated_at);
-    	$data = array("rating" => $rating);
+    		$response = (new UtilityController)->json_store($rating, "rating", true);
+    	} else {
+            $response = (new UtilityController)->json_store(null, "rating", false);
+        }
 
-    	$response = array("status" => $status, "data" => $data);
     	return Response::json($response);
     }
 }

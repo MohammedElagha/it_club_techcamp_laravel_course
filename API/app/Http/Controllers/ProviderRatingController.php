@@ -13,16 +13,7 @@ class ProviderRatingController extends Controller
 
     	$provider_rating = ProviderRating::where('provider_id', $provider_id)->select('ratings_no', 'rating_avg')->first();
 
-    	$status = array("status" => false, "http_code" => 404);
-    	if (isset($provider_rating)) {
-    		$status["status"] = true;
-    		$status["http_code"] = 200;
-    	}
-
-    	$data = array("provider_rating" => $provider_rating);
-
-    	$response = array("status" => $status, "data" => $data);
-
+        $response = (new UtilityController)->json_select(["provider_rating" => $provider_rating]);
     	return Response::json($response);
     }
 }

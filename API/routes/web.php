@@ -20,3 +20,5 @@ Route::get('category', 'CategoryController@index');
 Route::get('provider-rating', 'ProviderRatingController@show');
 
 Route::post('rating/store', 'RatingController@store');
+
+Route::get('provider', 'ProviderController@show');

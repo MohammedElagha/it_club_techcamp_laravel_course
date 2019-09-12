@@ -116,9 +116,9 @@ CREATE TABLE `countries` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_by` timestamp NULL DEFAULT NULL,
-  `updated_by` timestamp NULL DEFAULT NULL,
-  `deleted_by` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) NULL DEFAULT NULL,
+  `updated_by` int(11) NULL DEFAULT NULL,
+  `deleted_by` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -243,9 +243,9 @@ CREATE TABLE `units` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_by` timestamp NULL DEFAULT NULL,
-  `updated_by` timestamp NULL DEFAULT NULL,
-  `deleted_by` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) NULL DEFAULT NULL,
+  `updated_by` int(11) NULL DEFAULT NULL,
+  `deleted_by` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

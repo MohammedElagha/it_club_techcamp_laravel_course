@@ -9,7 +9,11 @@ use App\Rating;
 class RatingController extends Controller
 {
     public function store (Request $request) {
-    	$client_id = $request['client_id'];
+        // $client_id = $request['client_id'];  // not secure
+    	$token = $request->header('token');
+        $user_token = UserToken::whereRaw("BINARY `token`= ?",[$token])->first();
+        $client_id = $user_token->user_id;
+
     	$provider_id = $request['provider_id'];
     	$stars_no = $request['stars_no'];
     	$comment = $request['comment'];

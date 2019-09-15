@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('category', 'CategoryController@index');
+Route::get('category', 'CategoryController@index')->middleware('token');
 
-Route::get('provider-rating', 'ProviderRatingController@show');
+Route::get('provider-rating', 'ProviderRatingController@show')->middleware('token');
 
-Route::post('rating/store', 'RatingController@store');
+Route::post('rating/store', 'RatingController@store')->middleware('token');
 
-Route::get('provider', 'ProviderController@show');
+Route::get('provider', 'ProviderController@show')->middleware('token');
+
+Route::post('login', 'LoginController@login');

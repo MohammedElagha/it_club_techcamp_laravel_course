@@ -43,3 +43,7 @@ Route::post('user-group/store', 'UserGroupController@store')->middleware('admin_
 
 Route::get('admin/add', 'AdminController@create')->middleware('admin_auth')->middleware('user_group');
 Route::post('admin/store', 'AdminController@store')->middleware('admin_auth')->middleware('user_group');
+
+
+
+Route::get('excel/category', 'ExcelController@categories')->middleware('admin_auth')->middleware('user_group');
